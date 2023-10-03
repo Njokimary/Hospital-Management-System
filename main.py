@@ -18,3 +18,12 @@ class Patient(Base):
     contact = Column(Integer)
     email = Column(String)
 
+class Doctor(Base):
+    __tablename__ = 'doctors'
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(50))
+    last_name = Column(String(50))
+    specialty = Column(String(100))
+    department = Column(String(100))
+    phone = Column(String(15))
+    email = Column(String(100))
