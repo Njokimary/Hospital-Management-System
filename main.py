@@ -18,6 +18,7 @@ class Patient(Base):
     gender = Column(String)
     contact = Column(Integer)
     email = Column(String)
+    appointments = relationship("Appointment", back_populates="patient")
 
 class Doctor(Base):
     __tablename__ = 'doctors'
@@ -28,8 +29,13 @@ class Doctor(Base):
     department = Column(String)
     phone = Column(Integer)
     email = Column(String)
+    appointments = relationship("Appointment", back_populates="doctor")
 
 class Appointment(Base):
     __tablename__ = 'appointments'
     appointment_date = Column(Date)
     appointment_time = Column(DateTime)
+    patient_id = Column(Integer, ForeignKey('patients.id'))
+    doctor_id = Column(Integer, ForeignKey('doctors.id'))
+    patient = relationship("Patient", back_populates="appointments")
+    doctor = relationship("Doctor", back_populates="appointments")
