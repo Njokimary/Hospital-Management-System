@@ -1,6 +1,7 @@
-from sqlalchemy import Column, String, Integer, create_engine, ForeignKey
+from sqlalchemy import Column, String, Integer, create_engine, ForeignKey, Date, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+from datetime import datetime
 
 
 db_url = "sqlite:///hospital.db"
@@ -21,9 +22,14 @@ class Patient(Base):
 class Doctor(Base):
     __tablename__ = 'doctors'
     id = Column(Integer, primary_key=True)
-    first_name = Column(String(50))
-    last_name = Column(String(50))
-    specialty = Column(String(100))
-    department = Column(String(100))
-    phone = Column(String(15))
-    email = Column(String(100))
+    first_name = Column(String)
+    last_name = Column(String)
+    specialty = Column(String)
+    department = Column(String)
+    phone = Column(Integer)
+    email = Column(String)
+
+class Appointment(Base):
+    __tablename__ = 'appointments'
+    appointment_date = Column(Date)
+    appointment_time = Column(DateTime)
