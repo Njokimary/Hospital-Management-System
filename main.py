@@ -39,3 +39,7 @@ class Appointment(Base):
     doctor_id = Column(Integer, ForeignKey('doctors.id'))
     patient = relationship("Patient", back_populates="appointments")
     doctor = relationship("Doctor", back_populates="appointments")
+
+# create a session
+Session = sessionmaker(bind=engine)
+session = Session()
