@@ -72,4 +72,19 @@ available_doctors = session.query(Doctor).all()
 for doctor in available_doctors:
     print(doctor.first_name, doctor.last_name, doctor.specialty)
 
+# book an appointment for a patient with a doctor
+new_appointment = Appointment(appointment_date=datetime(2023, 10, 10, 10, 0))
+new_appointment.patient = session.query(Patient).filter_by(id=1).first()
+new_appointment.doctor = session.query(Doctor).filter_by(id=1).first()
+session.add(new_appointment)
+session.commit()
 
+# view all appointments
+# appointments = session.query(Appointment).all()
+# for appointment in appointments:
+#     print(appointment.patient_id, appointment.doctor_id, appointment.appointment_date)
+
+# view all appointments for a doctor and their patients
+doctor_appointments = session.query(Appointment).filter_by(doctor_id=1).all()
+for appointment in doctor_appointments:
+    print(appointment.patient.first_name, appointment.patient.last_name, appointment.appointment_date, appointment.doctor.first_name, appointment.doctor.last_name)
