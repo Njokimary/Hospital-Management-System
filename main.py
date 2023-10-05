@@ -43,3 +43,8 @@ class Appointment(Base):
 # create a session
 Session = sessionmaker(bind=engine)
 session = Session()
+
+# create a patient instance
+new_patient = Patient(first_name='John', last_name='Doe', gender='Male', contact=1234567890, email='johndoe@gmail.com')
+session.add(new_patient)
+session.commit()
