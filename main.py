@@ -49,6 +49,7 @@ session = Session()
 Base.metadata.create_all(engine)
 
 # create a patient instance
+
 new_patient1 = Patient(first_name='John', last_name='Doe', gender='Male', contact=1234567890, email='johndoe@gmail.com')
 session.add(new_patient1)
 session.commit()
@@ -88,3 +89,8 @@ session.commit()
 doctor_appointments = session.query(Appointment).filter_by(doctor_id=1).all()
 for appointment in doctor_appointments:
     print(appointment.patient.first_name, appointment.patient.last_name, appointment.appointment_date, appointment.doctor.first_name, appointment.doctor.last_name)
+
+# delete the appointment
+appointment_to_delete = session.query(Appointment).filter_by(id=1).first()
+session.delete(appointment_to_delete)
+session.commit()
