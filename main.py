@@ -66,3 +66,10 @@ session.commit()
 new_doctor2 = Doctor(first_name='James', last_name='Ice', specialty='Neurologist', department='Nerves', phone=222456900, email='jamesice@gmail.com')
 session.add(new_doctor2)
 session.commit()
+
+# view all available doctors
+available_doctors = session.query(Doctor).all()
+for doctor in available_doctors:
+    print(doctor.first_name, doctor.last_name, doctor.specialty)
+
+
