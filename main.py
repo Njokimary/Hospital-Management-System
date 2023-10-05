@@ -30,9 +30,9 @@ class Doctor(Base):
     phone = Column(Integer)
     email = Column(String)
     appointments = relationship("Appointment", back_populates="doctor")
-
 class Appointment(Base):
     __tablename__ = 'appointments'
+    id = Column(Integer, primary_key=True)
     appointment_date = Column(Date)
     appointment_time = Column(DateTime)
     patient_id = Column(Integer, ForeignKey('patients.id'))
@@ -40,9 +40,13 @@ class Appointment(Base):
     patient = relationship("Patient", back_populates="appointments")
     doctor = relationship("Doctor", back_populates="appointments")
 
+
 # create a session
 Session = sessionmaker(bind=engine)
 session = Session()
+
+# create all tables
+Base.metadata.create_all(engine)
 
 # create a patient instance
 new_patient = Patient(first_name='John', last_name='Doe', gender='Male', contact=1234567890, email='johndoe@gmail.com')
