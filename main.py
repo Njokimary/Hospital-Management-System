@@ -91,6 +91,13 @@ for appointment in doctor_appointments:
     print(appointment.patient.first_name, appointment.patient.last_name, appointment.appointment_date, appointment.doctor.first_name, appointment.doctor.last_name)
 
 # delete the appointment
-appointment_to_delete = session.query(Appointment).filter_by(id=1).first()
-session.delete(appointment_to_delete)
+# appointment_to_delete = session.query(Appointment).filter_by(id=1).first()
+# session.delete(appointment_to_delete)
+# session.commit()
+
+# cancel an appointment
+appointment_to_cancel = session.query(Appointment).filter_by(id=1).first()
+session.delete(appointment_to_cancel)
 session.commit()
+
+
