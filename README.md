@@ -22,6 +22,11 @@ Create and upgrade models using:
 alembic revision --autogenerate -m "message"
 alembic upgrade head
 
+Technologies used
+Python
+SQLAlchemy
+Alembic
+
 Features
 Create, read, update, and delete patient records.
 Create, read, update, and delete doctor records.
@@ -29,4 +34,7 @@ Schedule and manage patient appointments with doctors.
 View a list of available doctors and their specialties.
 View a list of appointments for a specific doctor.
 Cancel existing appointments.
+
+Collaborate
+Feel free to contribute by opening issues or pull requests.
 
